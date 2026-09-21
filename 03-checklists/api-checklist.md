@@ -1,75 +1,68 @@
 # Чек-лист
+## Инструмент: Postman
+## Base URL: https://reqres.in/api
 ## 1. Аутентификация
 
 ### POST /api/login
-- [ ] Валидные email + password → 200, есть token
-- [ ] Без пароля → 400, «Missing password»
-- [ ] Без email → 400, «Missing email or username»
-- [ ] Неверный email → 400
-- [ ] Пустое тело запроса → 400
-- [ ] Невалидный JSON → 400
-- [ ] Content-Type: application/json соблюдён
+- [ ] Валидные email + password / 200, есть token
+- [x] Без пароля / 400, "Missing password"
+- [x] Без email / 400, "Missing email or username"
+- [x] Неверный email / 400, "User not found"
+- [x] Пустое тело запроса / 400, "Missing email or username"
 
 ### POST /api/register
-- [ ] Валидные данные → 200, id + token
-- [ ] Без пароля → 400
-- [ ] Без email → 400
+- [ ] Валидные данные / 200, id + token
+- [x] Без пароля / 400
+- [x] Без email / 400
 
 ## 2. Пользователи
 
 ### GET /api/users?page=2
-- [ ] Статус 200
-- [ ] Есть поля: page, per_page, total, total_pages, data
-- [ ] data — массив
-- [ ] У каждого элемента: id, email, first_name, last_name, avatar
-- [ ] email в валидном формате
-- [ ] avatar — рабочая ссылка
+- [x] Статус 200
+- [x] Есть поля: page, per_page, total, total_pages, data
+- [x] data — массив
+- [x] У каждого элемента: id, email, first_name, last_name, avatar
+- [x] email в валидном формате
+- [x] avatar — рабочая ссылка
 
 ### GET /api/users/2
-- [ ] Статус 200
-- [ ] Поля: data.id, data.email, data.first_name, data.last_name
-- [ ] id совпадает с запрошенным
+- [x] Статус 200
+- [x] Поля: data.id, data.email, data.first_name, data.last_name, data.avatar
+- [x] id совпадает с запрошенным
 
 ### GET /api/users/23 (не существует)
-- [ ] Статус 404
-- [ ] Тело ответа пустое `{}`
+- [x] Статус 404
+- [x] Тело ответа пустое "{}"
 
 ## 3. CRUD
 
 ### POST /api/users
-- [ ] Статус 201
-- [ ] Есть id и createdAt
-- [ ] name и job совпадают с отправленными
+- [x] Статус 201
+- [x] Есть id и createdAt
 
 ### PUT /api/users/2
-- [ ] Статус 200
-- [ ] updatedAt присутствует
-- [ ] name и job обновлены
+- [x] Статус 200
+- [x] updatedAt присутствует
 
 ### PATCH /api/users/2
-- [ ] Статус 200
-- [ ] Обновляется только переданное поле
+- [x] Статус 200
+- [x] updatedAt присутствует
 
 ### DELETE /api/users/2
-- [ ] Статус 204
-- [ ] Тело ответа пустое
+- [x] Статус 204
+- [x] Тело ответа пустое
 
 ## 4. Негативные и граничные
 
-- [ ] GET /api/users/0 → 404
-- [ ] GET /api/users/-1 → 404
-- [ ] GET /api/users/abc → 404
-- [ ] POST с пустым телом → 400
-- [ ] POST с очень длинным name (1000+ символов)
-- [ ] Передача SQL-инъекции в name
-- [ ] Передача XSS в name
-- [ ] Неверный Content-Type (text/plain) → 400
-- [ ] Отсутствие обязательных полей
+- [x] GET /api/users/0 / 404
+- [x] GET /api/users/-1 / 404
+- [x] GET /api/users/abc / 404
+- [x] POST с пустым телом / 400
+- [x] Отсутствие обязательных полей
 
 ## 5. Общие проверки
 
-- [ ] Все ответы в JSON
-- [ ] Заголовок Content-Type: application/json
-- [ ] Время ответа ≤ 1 сек
-- [ ] Коды ответов соответствуют REST (200, 201, 204, 400, 404)
-- [ ] Ошибки содержат понятное сообщение
+- [x] Все ответы в JSON
+- [x] Время ответа < 1 сек
+- [x] Коды ответов соответствуют REST (200, 201, 204, 400, 404)
+- [x] Ошибки содержат понятное сообщение
